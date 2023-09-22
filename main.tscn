@@ -6,3 +6,5 @@
 script = ExtResource("1_isarx")
 
 [node name="floor" type="Node2D" parent="."]
+
+[node name="Camera2D" type="Camera2D" parent="."]
