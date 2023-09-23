@@ -1,0 +1,20 @@
+[gd_scene load_steps=5 format=3 uid="uid://bqps8hodng7nn"]
+
+[ext_resource type="PackedScene" uid="uid://c4mu51xw56wua" path="res://class/unit_class.tscn" id="1_1unwx"]
+[ext_resource type="Texture2D" uid="uid://208vubibil1p" path="res://asset_lib/player_body.png" id="2_vo7b4"]
+[ext_resource type="Script" path="res://tscn/unit/player/player.gd" id="3_3pdab"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_s6yw6"]
+
+[node name="player" type="CharacterBody2D"]
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_s6yw6")
+
+[node name="unit_class" parent="." instance=ExtResource("1_1unwx")]
+
+[node name="player" type="Sprite2D" parent="unit_class"]
+texture_filter = 1
+texture = ExtResource("2_vo7b4")
+script = ExtResource("3_3pdab")

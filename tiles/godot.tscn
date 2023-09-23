@@ -1,9 +1,0 @@
-[gd_scene load_steps=2 format=3 uid="uid://blgi23wfr3rjc"]
-
-[ext_resource type="Texture2D" uid="uid://h4vdts7jdl3c" path="res://asset_lib/dirt.png" id="1_fmyc6"]
-
-[node name="Sprite2D" type="Sprite2D"]
-texture_filter = 1
-texture = ExtResource("1_fmyc6")
-
-[node name="VisibleOnScreenEnabler2D" type="VisibleOnScreenEnabler2D" parent="."]

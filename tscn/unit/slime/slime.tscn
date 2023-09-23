@@ -1,0 +1,54 @@
+[gd_scene load_steps=13 format=3 uid="uid://d14x8qdldi8h1"]
+
+[ext_resource type="PackedScene" uid="uid://c4mu51xw56wua" path="res://class/unit_class.tscn" id="1_k3yjy"]
+[ext_resource type="Shader" path="res://tscn/unit/slime/slime.gdshader" id="2_7fklt"]
+[ext_resource type="Texture2D" uid="uid://b7gghgdttbip1" path="res://asset_lib/slime_alpha.png" id="3_6qfge"]
+[ext_resource type="Texture2D" uid="uid://dmqfwu38bctvv" path="res://asset_lib/slime.png" id="4_tdh0o"]
+[ext_resource type="Script" path="res://tscn/unit/slime/slime.gd" id="5_70607"]
+[ext_resource type="Shader" path="res://tscn/unit/slime_child/waves.gdshader" id="6_qed4w"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_6xkm8"]
+radius = 5.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_2ll0q"]
+shader = ExtResource("2_7fklt")
+shader_parameter/ALPHA = ExtResource("3_6qfge")
+
+[sub_resource type="Curve" id="Curve_rassu"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.5, 0), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_waa8l"]
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_c7pwy"]
+noise = SubResource("FastNoiseLite_waa8l")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_i2uhf"]
+resource_local_to_scene = true
+shader = ExtResource("6_qed4w")
+shader_parameter/refraction_stretch = Vector2(1, 1)
+shader_parameter/refraction_strength = 0.02
+shader_parameter/water_tint = Color(0, 0, 0, 0)
+shader_parameter/speed = 0.1
+shader_parameter/refraction_map = SubResource("NoiseTexture2D_c7pwy")
+
+[node name="slime" type="CharacterBody2D"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_6xkm8")
+
+[node name="unit_class" parent="." instance=ExtResource("1_k3yjy")]
+
+[node name="slime" type="Sprite2D" parent="unit_class"]
+texture_filter = 1
+material = SubResource("ShaderMaterial_2ll0q")
+scale = Vector2(1, 1.05556)
+texture = ExtResource("4_tdh0o")
+script = ExtResource("5_70607")
+curve = SubResource("Curve_rassu")
+
+[node name="shader" type="Sprite2D" parent="unit_class/slime"]
+z_index = 1
+texture_filter = 1
+material = SubResource("ShaderMaterial_i2uhf")
+texture = ExtResource("3_6qfge")

@@ -7,4 +7,7 @@ script = ExtResource("1_isarx")
 
 [node name="floor" type="Node2D" parent="."]
 
+[node name="units" type="Node2D" parent="."]
+
 [node name="Camera2D" type="Camera2D" parent="."]
+zoom = Vector2(4, 4)

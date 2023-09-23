@@ -5,4 +5,4 @@ var data = {
 	"block":[0,1],
 }
 func _init():
-	data["floor"][0] = load("res://tiles/godot.tscn")
+	data["floor"][0] = load("res://tiles/dirt.tscn")
