@@ -11,6 +11,7 @@ var PlayerPosition:Vector2 = Vector2.ZERO #來源:玩家實體
 var PlayerInputVector:Vector2 = Vector2.ZERO #來源:_player_input.玩家輸入
 var run:bool = false
 var aim:bool = false
+var moving:bool = false
 
 
 

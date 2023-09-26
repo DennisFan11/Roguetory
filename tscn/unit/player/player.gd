@@ -20,6 +20,10 @@ func _ready():
 	Global.PlayerNode = self
 
 func _process(delta):
+	if Global.moving == true:
+		$"../AnimationPlayer".play("walk")
+	else:
+		$"../AnimationPlayer".play("IDLE")
 	Global.PlayerPosition = global_position
 	$"..".move_vector = Global.PlayerInputVector
 	

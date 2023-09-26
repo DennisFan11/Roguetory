@@ -17,7 +17,19 @@ func _process(delta):
 	_camera(delta)
 	Global._player_input()
 	loader.CenterPos = Global.PlayerPosition
-	
+	if Input.is_action_pressed("shift"):
+		Global.run = true
+	else:
+		Global.run = false
+	if (Input.is_action_pressed("down") or
+	Input.is_action_pressed("up") or 
+	Input.is_action_pressed("left") or 
+	Input.is_action_pressed("right")
+	):
+		Global.moving = true
+	else:
+		Global.moving = false
+		
 	if Input.is_mouse_button_pressed(MOUSE_BUTTON_LEFT):
 		var slime = load("res://tscn/unit/slime_child/slime_child.tscn")
 		var unit = slime.instantiate()
